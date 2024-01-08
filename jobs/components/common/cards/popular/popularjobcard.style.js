@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
     fontSize: SIZES.medium - 2,
     fontFamily: FONT.regular,
     color: "#B3AEC6",
-  },
+  }
 });
 
 export default styles;
