@@ -100,11 +100,59 @@
 //   document.querySelector('.result').textContent = document.querySelector('.nyuryoku').value;
 // })
 
+//背景変更スイッチ
+// document.querySelector('#light').addEventListener('change', ()=>{
+//  document.querySelector('body').style = 'background: yellow';
+// })
 
-document.querySelector('#light').addEventListener('change', ()=>{
- document.querySelector('body').style = 'background: yellow';
+// document.querySelector('#dark').addEventListener('change', ()=>{
+//   document.querySelector('body').style = 'background: darkblue';
+//  })
+
+//時間操作
+// const n = Number(prompt('Number?'));
+// console.log(n + 5);
+
+//映画のトータル時間表示
+// const n = Number(prompt('total duration?'));
+// console.log(`Hours: ${Math.floor(n / 60)}`);
+// console.log(`Minutes: ${n % 60}`);
+
+//通貨変換計算
+// const n = Number(prompt('Yen?'));
+// const amount = (n/144).toFixed(2);
+// console.log(`USD: ${Number(amount).toLocaleString()}`);
+// toFixedは小数点指定だが四捨五入される
+// toLocaleStringはカンマをつける
+
+// 繰り返し処理
+// const n = Number(prompt('Count?'));
+// for (let i = 0; i < n; i++ ) {
+//   if ( i % 3 ===0){
+//     console.log(`---item: ${i}---`);
+//   }else {
+//     console.log(`===item: ${i}===`);
+//   }
+// }
+
+//乱数生成
+// function getRandomInteger(max){
+//   return Math.floor(Math.random() * (max + 1));
+// }
+
+// for (let i = 0; i < 10; i++) {
+//   const n = getRandomInteger(5)
+//   console.log(`${i}: ${n}`);
+// }
+
+const scores = [70, 90, 80, 75];
+let max = 0;
+
+scores.forEach((score)=>{
+  if (score > max){
+    max = score;
+  }
 })
-
-document.querySelector('#dark').addEventListener('change', ()=>{
-  document.querySelector('body').style = 'background: darkblue';
- })
+console.log(max);
+console.log(Math.max(...scores));
+console.log(Math.min(...scores));
