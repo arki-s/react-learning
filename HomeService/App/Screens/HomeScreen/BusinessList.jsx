@@ -23,11 +23,13 @@ export default function BusinessList() {
       <FlatList
         data={businessList}
         renderItem={({ item, index }) => (
-          <View>
+          <View style={{ marginRight: 10 }}>
             {/* <Text>{item.name}</Text> */}
             <BusinessListItemSmall business={item} />
           </View>
         )}
+        horizontal={true}
+        showsHorizontalScrollIndicator={false}
       />
     </View>
   );
