@@ -39,7 +39,7 @@ export default function Login() {
           Let's Find
           <Text style={{ fontWeight: "bold" }}>
             {" "}
-            Professional Cleaning and repair
+            Professional Cleaning and repair{" "}
           </Text>
           Services.
         </Text>

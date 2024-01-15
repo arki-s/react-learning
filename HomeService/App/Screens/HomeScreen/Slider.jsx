@@ -37,11 +37,6 @@ export default function Slider() {
 }
 
 const styles = StyleSheet.create({
-  heading: {
-    fontsize: 20,
-    fontFamily: "outfit-medium",
-    marginBottom: 10,
-  },
   sliderImage: {
     width: 270,
     height: 150,

@@ -23,7 +23,7 @@ export default function Header() {
             style={styles.userImage}
           />
           <View>
-            <Text style={{ color: Colors.WHITE, fontFamily: "outfit" }}>
+            <Text style={{ color: Colors.WHITE, fontFamily: "outfit-medium" }}>
               Welcome,
             </Text>
             <Text
@@ -83,7 +83,7 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     width: "85%",
     fontSize: 16,
-    fontFamily: "outfit",
+    fontFamily: "outfit-medium",
   },
   searchBarContainer: {
     marginTop: 15,

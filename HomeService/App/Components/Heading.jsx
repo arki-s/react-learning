@@ -1,11 +1,11 @@
 import { View, Text, StyleSheet } from "react-native";
 import React from "react";
 
-export default function Heading({ text, isVieaAll = false }) {
+export default function Heading({ text, isViewAll = false }) {
   return (
     <View style={styles.container}>
       <Text style={styles.heading}>{text}</Text>
-      {isVieaAll && <Text>View all</Text>}
+      {isViewAll && <Text>View all</Text>}
     </View>
   );
 }
@@ -18,8 +18,8 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
   },
   heading: {
-    fontsize: 20,
-    fontFamily: "outfit-medium",
+    fontSize: 20,
+    fontFamily: "outfit",
     marginBottom: 10,
   },
 });
