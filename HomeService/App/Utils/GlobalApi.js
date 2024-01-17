@@ -84,13 +84,22 @@ const getBusinessListByCategory = async(category)=>{
 
 const createBooking = async(data)=>{
   const mutationQuery=gql`
-  mutation MyMutation {
+  mutation createBooking {
     createBooking(
-      data: {bookingStatus: Booked, businessList: {connect: {id: ""}}, date: "", time: "", userEmail: "", userName: ""}
+      data: {bookingStatus: Booked,
+        date: "`+data.date+`",
+        time: "`+data.time+`",
+        userEmail: "rika@example.com",
+        userName: "Rika Saito",
+        note: "`+data.note+`",
+        businessList: {connect: {id: "`+data.businessId+`"}}}
     ) {
       id
     }
-    publishManyBookings(to: PUBLISHED)
+    publishManyBookings(to: PUBLISHED) {
+      count
+    }
+
   }
   `
   const result = await request(MASTER_URL, mutationQuery);

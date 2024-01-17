@@ -55,13 +55,14 @@ export default function BookingModal({ businessId, hideModal }) {
 
       time: selectedTime,
       date: selectedDate,
-      // note: note,
+      note: note,
       businessId: businessId,
     };
 
     GlobalApi.createBooking(data).then((resp) => {
       console.log("Resp", resp);
       ToastAndroid.show("Booking Created Successfully!", ToastAndroid.LONG);
+      hideModal();
     });
   };
 
