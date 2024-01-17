@@ -106,7 +106,45 @@ const createBooking = async(data)=>{
   return result
 }
 
+const getUserBookings = async(userEmail)=>{
+  const query=gql`
+  query getUserbBookings {
+    bookings(orderBy: updatedAt_DESC, where: {userEmail: "`+userEmail+`"}) {
+      time
+      userEmail
+      userName
+      bookingStatus
+      date
+      id
+      businessList {
+        id
+        images {
+          url
+        }
+        name
+        address
+        contactPerson
+        email
+        about
+        category {
+          id
+          name
+        }
+      }
+    }
+  }
+  `
+
+  const result = await request(MASTER_URL, query);
+  return result
+}
+
 
 export default {
-  getSlider, getCategories, getBusinessList, getBusinessListByCategory, createBooking
+  getSlider,
+  getCategories,
+  getBusinessList,
+  getBusinessListByCategory,
+  createBooking,
+  getUserBookings
 }

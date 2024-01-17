@@ -60,7 +60,7 @@ export default function BookingModal({ businessId, hideModal }) {
     };
 
     GlobalApi.createBooking(data).then((resp) => {
-      console.log("Resp", resp);
+      // console.log("Resp", resp);
       ToastAndroid.show("Booking Created Successfully!", ToastAndroid.LONG);
       hideModal();
     });

@@ -6,6 +6,7 @@ import {
   StyleSheet,
   ScrollView,
   Modal,
+  Linking,
 } from "react-native";
 import React, { useEffect, useState } from "react";
 import { useNavigation, useRoute } from "@react-navigation/native";
@@ -24,6 +25,14 @@ export default function BusinessDetailsScreen() {
   useEffect(() => {
     console.log(param?.business);
   }, []);
+
+  const onMessageBtnClick = () => {
+    Linking.openURL(
+      "mailto:" +
+        business?.email +
+        "?subject=I am looking for your service&body=Hi There"
+    );
+  };
 
   return (
     business && (
@@ -104,7 +113,10 @@ export default function BusinessDetailsScreen() {
         <View
           style={{ display: "flex", flexDirection: "row", margin: 5, gap: 5 }}
         >
-          <TouchableOpacity style={styles.messageBtn}>
+          <TouchableOpacity
+            style={styles.messageBtn}
+            onPress={() => onMessageBtnClick()}
+          >
             <Text
               style={{
                 textAlign: "center",

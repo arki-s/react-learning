@@ -5,6 +5,11 @@ export default{
   LIGHT_GRAY:'#EDEDED',
   PRIMARY_LIGHT: '#dcc8f7',
   GRAY:"#808080",
+  GREEN_LIGHT:"#b7e1cd",
+  RED_LIGHT:"#fcb3af",
+  RED:"#f70404",
+  GREEN:"#01bc0e"
+
 
 
 }

@@ -4,6 +4,7 @@ import HomeScreen from "../Screens/HomeScreen/HomeScreen";
 import { createStackNavigator } from "@react-navigation/stack";
 import BusinessListByCategoryScreen from "../Screens/BusinessListByCategory/BusinessListByCategoryScreen";
 import BusinessDetailsScreen from "../Screens/BusinessDetailsScreen/BusinessDetailsScreen";
+import BookingScreen from "../Screens/BookingScreen/BookingScreen";
 
 const Stack = createStackNavigator();
 export default function HomeNavigation() {
