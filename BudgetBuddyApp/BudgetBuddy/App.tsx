@@ -46,7 +46,12 @@ export default function App() {
 
   return (
     <NavigationContainer>
-      <Suspense>
+      <Suspense fallback={
+        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+          <Text>Loading...</Text>
+          <ActivityIndicator size={"large"} color="gray" />
+        </View>
+      }>
         <SQLiteProvider databaseName='mySQLiteDB.db' useSuspense>
           <Stack.Navigator>
             <Stack.Screen name="Home" component={Home}
