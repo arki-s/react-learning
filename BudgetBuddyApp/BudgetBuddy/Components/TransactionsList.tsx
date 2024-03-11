@@ -13,7 +13,7 @@ export default function TransactionsList({
 
 
   return (
-    <View>
+    <View style={{ gap: 15 }}>
       {transactions.map((ts) => {
         const categoryForCurrentItem = categories.find((ct) => ct.id === ts.category_id);
 
