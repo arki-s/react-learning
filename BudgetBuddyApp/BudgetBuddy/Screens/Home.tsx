@@ -4,6 +4,7 @@ import { Category, Transaction, TransactionsByMonth } from '../types';
 import { useSQLiteContext } from 'expo-sqlite/next';
 import TransactionsList from '../Components/TransactionsList';
 import Card from '../Components/ui/Card';
+import AddTransaction from '../Components/AddTransaction';
 
 
 export default function Home() {
@@ -46,10 +47,14 @@ export default function Home() {
     const transactionsByMonth = await db.getAllAsync<TransactionsByMonth>(`
     SELECT
       COALESCE(SUM(CASE WHEN type = 'Expense' THEN amount ELSE 0 END), 0) AS totalExpenses,
-      COALESCE(SUM(CASE WHEN type = 'Income THEN amount ELSE 0 END), 0) AS totalIncome
+      COALESCE(SUM(CASE WHEN type = 'Income' THEN amount ELSE 0 END), 0) AS totalIncome
     FROM Transactions
     WHERE date >= ? AND date <= ?;
-    `, [startOfMonthTimestamp, endOfMonthTimestamp]);
+    `, [startOfMonthTimestamp, endOfMonthTimestamp])
+      .catch((error) => {
+        console.log("getting transactions by Month error!");
+        console.log(error.message);
+      });
 
     setTransactionsByMonth(transactionsByMonth[0]);
 
@@ -60,11 +65,30 @@ export default function Home() {
       await db.runAsync(`DELETE FROM Transactions WHERE id = ?;`, [id]);
       await getData(); // reload the data from sqlite
     })
+  }
+
+  async function insertTransaction(transaction: Transaction) {
+    db.withTransactionAsync(async () => {
+      await db.runAsync(
+        `
+        INSERT INTO Transactions (category_id, amount, date, description, type) VALUES (?, ?, ?, ?, ?);
+        `,
+        [
+          transaction.category_id,
+          transaction.amount,
+          transaction.date,
+          transaction.description,
+          transaction.type
+        ]
+      );
+      await getData();
+    })
 
   }
 
   return (
     <ScrollView contentContainerStyle={{ padding: 15, paddingVertical: 170 }}>
+      <AddTransaction insertTransaction={insertTransaction} />
       <TransactionSummary totalExpenses={transactionsByMonth.totalExpenses} totalIncome={transactionsByMonth.totalIncome} />
       <TransactionsList categories={categories} transactions={transactions} deleteTransaction={deleteTransaction} />
     </ScrollView>
@@ -80,7 +104,7 @@ function TransactionSummary({ totalExpenses, totalIncome }: TransactionsByMonth)
 
   const getMoneyTextStyle = (value: number): TextStyle => ({
     fontWeight: "bold",
-    color: value < 0 ? "ff4500" : "#2e8b57",
+    color: value < 0 ? "#ff4500" : "#2e8b57",
   });
 
   const formatMoney = (value: number) => {
