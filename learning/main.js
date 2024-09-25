@@ -145,14 +145,76 @@
 //   console.log(`${i}: ${n}`);
 // }
 
-const scores = [70, 90, 80, 75];
-let max = 0;
+// const scores = [70, 90, 80, 75];
+// let max = 0;
 
-scores.forEach((score)=>{
-  if (score > max){
-    max = score;
-  }
-})
-console.log(max);
-console.log(Math.max(...scores));
-console.log(Math.min(...scores));
+// scores.forEach((score)=>{
+//   if (score > max){
+//     max = score;
+//   }
+// })
+// console.log(max);
+// console.log(Math.max(...scores));
+// console.log(Math.min(...scores));
+
+// const string = prompt('Name?');
+// if (string.toLowerCase().trim() === 'taro'){
+//   console.log('correct');
+// } else {
+//   console.log('wrong');
+// }
+
+// const emails = [
+//   'taro@example.com',
+//   'jiro@example.com',
+//   'saburo@example.com',
+//   'kintaro@example.com'
+// ];
+
+// emails.forEach((email)=>{
+//   if (email.includes('taro') === true) {
+//     console.log(email);
+//   }
+// })
+
+// emails.forEach((email)=>{
+//   if (email.indexOf('taro') === 0) {
+//     console.log(email);
+//   }
+// })
+
+// emails.forEach((email)=>{
+//   if (email.startsWith('taro') === true) {
+//     console.log(email);
+//   }
+// })
+
+// emails.forEach((email)=>{
+  // console.log(email.slice(0, 4));
+  // const loc = email.indexOf('@');
+  // console.log(email.slice(0,loc));
+  // console.log(email.substring(0,loc));
+// })
+
+// emails.forEach((email)=>{
+  // console.log(email.replace('@example.com', ''));
+
+//   const items = email.split('@')
+//   console.log(items[0]);
+// })
+
+// const counts = [6, 12, 8, 15];
+
+// counts.forEach((count)=>{
+  // let bar = '';
+  // for (let i = 0 ; i < count; i++){
+  //   bar += '*';
+  // }
+//   const bar = '*'.repeat(count);
+//   const label = String(count).padStart(2, ' ');
+//   console.log(`${label}: ${bar}`);
+
+// });
+
+const HOURS = Array.from(Array(12),(_, i)=> (i + 1));
+console.log(HOURS);
